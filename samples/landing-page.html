@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page — VibeSketch Sample</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a14;--text:#f0eeff;--muted:#8b8aaa;--border:rgba(255,255,255,0.08);
+    --pink:#ff6ec7;--orange:#ff9a3c;--yellow:#ffe066;--cyan:#3cffd0;--purple:#a855f7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+  
+  /* Nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(10,10,20,0.8);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);padding:16px 80px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;
+    background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{background:linear-gradient(135deg,var(--pink),var(--orange));border:none;border-radius:10px;
+    color:#1a0a00;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;
+    padding:10px 20px;cursor:pointer;transition:all 0.2s;}
+  .nav-cta:hover{opacity:0.9;transform:translateY(-1px);}
+
+  /* Hero */
+  .hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:80px;position:relative;}
+  .hero-badge{background:rgba(255,110,199,0.1);border:1px solid rgba(255,110,199,0.3);
+    color:var(--pink);border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;
+    margin-bottom:28px;display:inline-flex;align-items:center;gap:6px;}
+  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(42px,6vw,80px);font-weight:800;
+    line-height:1.1;margin-bottom:24px;}
+  .hero h1 .grad{background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero-sub{font-size:18px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:40px;}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn-grad{background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));
+    border:none;border-radius:14px;color:#1a0a00;font-family:'Syne',sans-serif;font-weight:700;
+    font-size:15px;padding:15px 32px;cursor:pointer;transition:all 0.2s;}
+  .btn-grad:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,110,199,0.4);}
+  .btn-outline{background:none;border:1px solid var(--border);border-radius:14px;color:var(--text);
+    font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;padding:15px 32px;cursor:pointer;transition:all 0.2s;}
+  .btn-outline:hover{background:rgba(255,255,255,0.05);}
+  .hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,110,199,0.12),transparent 70%);
+    top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+
+  /* Features */
+  section{padding:80px;}
+  .section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--pink);margin-bottom:12px;}
+  .section-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;margin-bottom:16px;}
+  .section-sub{color:var(--muted);font-size:16px;max-width:480px;line-height:1.7;margin-bottom:48px;}
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .feature-card{background:rgba(18,18,31,0.6);border:1px solid var(--border);border-radius:20px;
+    padding:28px;transition:all 0.3s;}
+  .feature-card:hover{border-color:rgba(255,110,199,0.3);transform:translateY(-4px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+  .feature-icon{font-size:32px;margin-bottom:16px;}
+  .feature-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;}
+  .feature-card p{color:var(--muted);font-size:14px;line-height:1.7;}
+
+  /* CTA */
+  .cta-section{background:rgba(255,110,199,0.05);border:1px solid rgba(255,110,199,0.15);
+    border-radius:28px;margin:0 80px 80px;padding:64px;text-align:center;}
+  .cta-section h2{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;margin-bottom:12px;}
+  .cta-section p{color:var(--muted);font-size:16px;margin-bottom:32px;}
+
+  /* Footer */
+  footer{border-top:1px solid var(--border);padding:32px 80px;display:flex;align-items:center;justify-content:space-between;}
+  footer p{color:var(--muted);font-size:13px;}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="logo">✦ VibeSketch</div>
+    <ul class="nav-links">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+    <button class="nav-cta">Get Started Free →</button>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-badge">✦ Powered by Generative AI</div>
+    <h1>Turn words into<br><span class="grad">beautiful UIs</span><br>instantly</h1>
+    <p class="hero-sub">
+      Describe any interface in plain English. VibeSketch generates pixel-perfect,
+      interactive UI prototypes in seconds — no coding required.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-grad">Start Building Free →</button>
+      <button class="btn-outline">Watch Demo ▷</button>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything you need to prototype faster</h2>
+    <p class="section-sub">From idea to interactive demo in under 60 seconds. No design skills needed.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>AI-Powered Generation</h3>
+        <p>Describe your UI in plain English. Our AI understands context and generates production-ready HTML, CSS, and JS.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Iterative Refinement</h3>
+        <p>Not perfect? Just say "make it darker" or "add a sidebar". Refine your prototype through natural conversation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Responsive Preview</h3>
+        <p>Preview your UI across desktop, tablet, and mobile in real time. Every prototype is responsive by default.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Figma Export</h3>
+        <p>Export design tokens and Figma-ready frames. Seamlessly hand off from prototype to high-fidelity design.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Zero Setup</h3>
+        <p>Runs entirely in your browser. No installations, no accounts, no cloud. Just open and start building.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💾</div>
+        <h3>Prompt History</h3>
+        <p>Every iteration is saved locally. Revisit, restore, or branch off any previous version of your prototype.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Ready to vibe code your next UI?</h2>
+    <p>Join hundreds of developers who prototype faster with AI.</p>
+    <button class="btn-grad">Get Started — It's Free →</button>
+  </div>
+
+  <footer>
+    <p>✦ VibeSketch · Built with Generative AI · 2025</p>
+    <p style="color:var(--muted)">Mini Project · AI & ML · Dept. of CSE</p>
+  </footer>
+</body>
+</html>
