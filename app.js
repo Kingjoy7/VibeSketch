@@ -5,6 +5,8 @@
    FREE: Uses Anthropic claude-haiku-4-5, no key needed
    ============================================= */
 
+require('dotenv').config();
+
 // ─── STATE ────────────────────────────────────
 const state = {
   currentCode: '',
@@ -83,7 +85,7 @@ async function callClaude(messages) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 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',
+      'Authorization': `Bearer ${process.env.GROK_API}`,
     },
     body: JSON.stringify({
       model: 'llama-3.3-70b-versatile',
