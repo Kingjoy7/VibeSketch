@@ -232,4 +232,3 @@ Prompt → Generate → Preview → Refine → Repeat → Export
 
 ---
 
-*Built with ✦ VibeSketch · Powered by Claude AI · 2025*
